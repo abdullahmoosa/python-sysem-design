@@ -1,0 +1,5 @@
+pyjwt
+flask
+flask_mysqldb
+pylint
+jedi
