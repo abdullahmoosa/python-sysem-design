@@ -1,31 +1,31 @@
-apiVersion : app/v1
-kind : Deployment
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: auth
   labels:
-    app: auth 
-
+    app: auth
 spec:
   replicas: 2
   selector:
     matchLabels:
       app: auth
-    strategry:
-      type: RollingUpdate
-      rollingUpdate:
-        maxSurge: 3
-    template:
-      metadata:
-        labels:
-          app: auth
-      spec:
-        containers:
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
         - name: auth
-          image: abdullamoosa28/auth
+          image: abdullahmoosa28/auth
+
           ports:
             - containerPort: 5000
           envFrom:
             - configMapRef:
-              name: auth-configmap
+                name: auth-configmap
             - secretRef:
-              name: auth-secret
+                name: auth-secret
