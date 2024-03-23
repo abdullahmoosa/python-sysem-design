@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metdadaa:
+  name: gateway
+  labels:
+    app: gateway
+spec:
+  replocas: 2
+  selector:
+    mathLabels:
+      app: gateway
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+  template:
+    metadata:
+      labels:
+        app: gateway
+    spec:
+      containers:
+        - name: gateway
+          image: abdullahmoosa28/gateway
+          envFeom:
+            - configMapRef:
+                name: gateway-configmap
+            - secretRef:
+                name: gateway-secret
