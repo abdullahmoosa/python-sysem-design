@@ -1,13 +1,13 @@
 apiVersion: apps/v1
 kind: Deployment
-metdadaa:
+metadata:
   name: gateway
   labels:
     app: gateway
 spec:
-  replocas: 2
+  replicas: 2
   selector:
-    mathLabels:
+    matchLabels:
       app: gateway
   strategy:
     type: RollingUpdate
@@ -21,7 +21,7 @@ spec:
       containers:
         - name: gateway
           image: abdullahmoosa28/gateway
-          envFeom:
+          envFrom:  # Corrected field name
             - configMapRef:
                 name: gateway-configmap
             - secretRef:
